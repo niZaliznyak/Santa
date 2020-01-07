@@ -16,29 +16,28 @@ let rest = givers.slice();
 
 for(i = 0; i < nUsers; i++){
   console.log("Раунд:", i+1, " --------------------");
+  console.log('Даритель: ', givers[i]);
 
   let elves = rest.slice();
-  
-  elves = elves.filter((item) => item != givers[i]);
 
-  console.log('Даритель: ', givers[i]);
+  elves = elves.filter((item) => item != givers[i]);
       
-  let partner = prompt(`${givers[i]}, введите имя вашего партнера`);
-  if (partner != ""){
-    elves = elves.filter((item) => item != partner);
-  }
+  let partner = prompt(`${givers[i]}, если есть необходимость, введите имя кого исключить`);
+    if (partner != ""){
+      elves = elves.filter((item) => item != partner);
+    }
 
   console.log('Возможные получатели: ', elves);
 
-  alert(`${givers[i]}, сейчас вы узнаете чьим Сантой вы будете (убедитесь, что никто не видит)`);
+  alert(`${givers[i]}, сейчас вы узнаете, кому будете дарить подарок (убедитесь, что никто этого не видит)`);
 
   let winer = elves[Math.floor(Math.random()*elves.length)].slice();
 
-  alert(`Вы дарите подарок ${winer}!`);
   console.log(`Вы дарите подарок ${winer}!`);
+  alert(`Вы дарите подарок ${winer}!`);
 
   rest = rest.filter((item) => item != winer);
 }
-  alert("Игра закончена! Счастливых праздников!");
+  alert("Игра окончена! Счастливых праздников!");
 
 </script>
