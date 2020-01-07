@@ -1,0 +1,44 @@
+<script>
+let nUsers = +prompt("Введите кол-во участников", 3); 
+
+let givers = [];
+
+for(i = 0; i < nUsers; i++){
+  givers.push(prompt(`Введите имя участника #${i+1}`));
+  while(givers[i] == "" || givers[i] <= null){
+    givers[i] = prompt("Введите имя участника");
+  }
+}
+
+console.log('Все участники: ',givers);
+
+let rest = givers.slice();
+
+for(i = 0; i < nUsers; i++){
+  console.log("Раунд:", i+1, " --------------------");
+
+  let elves = rest.slice();
+  
+  elves = elves.filter((item) => item != givers[i]);
+
+  console.log('Даритель: ', givers[i]);
+      
+  let partner = prompt(`${givers[i]}, введите имя вашего партнера`);
+  if (partner != ""){
+    elves = elves.filter((item) => item != partner);
+  }
+
+  console.log('Возможные получатели: ', elves);
+
+  alert(`${givers[i]}, сейчас вы узнаете чьим Сантой вы будете (убедитесь, что никто не видит)`);
+
+  let winer = elves[Math.floor(Math.random()*elves.length)].slice();
+
+  alert(`Вы дарите подарок ${winer}!`);
+  console.log(`Вы дарите подарок ${winer}!`);
+
+  rest = rest.filter((item) => item != winer);
+}
+  alert("Игра закончена! Счастливых праздников!");
+
+</script>
